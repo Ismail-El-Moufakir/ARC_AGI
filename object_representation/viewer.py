@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import json
 from matplotlib.colors import ListedColormap
-from SlotAttention import SlotAttention
+
 import numpy as np
 # Custom color palette for values 0-9
 custom_colors = [
@@ -29,8 +29,12 @@ def display_grid_pairs(grid_pairs, title):
 def Display_Task(Filename: str):
     with open(Filename, 'r') as file:
         Grid_dict = json.load(file)
-    train_fig = display_grid_pairs(Grid_dict["train"], f"Training Examples - {Filename}")
+    #train_fig = display_grid_pairs(Grid_dict["train"], f"Training Examples - {Filename}")
     test_fig = display_grid_pairs(Grid_dict["test"], f"Testing Examples - {Filename}")
+    
+def display_grid(grid):
+    plt.imshow(grid, cmap=cmap, vmin=0, vmax=9)
+    plt.axis('off')
+    plt.show()
 
-Display_Task(r"data\training\007bbfb7.json")
-plt.show()
+
